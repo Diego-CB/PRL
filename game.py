@@ -90,7 +90,7 @@ class SnakeGameAI:
             self.snake.pop()
         
         # 5. update ui and clock
-        # self._update_ui()
+        self._update_ui()
         self.clock.tick(SPEED)
         # 6. return game over and score
         return reward, game_over, self.score
