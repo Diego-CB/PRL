@@ -68,4 +68,15 @@ class QTrainer:
         self.optimizer.step()
 
 
+class PolicyNetwork(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(PolicyNetwork, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, output_size)
+        self.softmax = nn.Softmax(dim=-1)  # Softmax para obtener probabilidades de las acciones
+
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+        return self.softmax(x)  # Distribución de probabilidad de las acciones
 
